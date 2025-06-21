@@ -1,1 +1,2 @@
-#initial setup
+1. initial setup
+2. 

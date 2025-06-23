@@ -74,7 +74,7 @@ export default async function DashboardLayout({
                   <Button
                     variant="secondary"
                     size="icon"
-                    className="rounded-full w-10 h-10 flex items-center justify-center text-sm font-semibold uppercase bg-muted"
+                    className="rounded-full w-10 h-10 flex items-center justify-center text-sm font-semibold uppercase bg-muted cursor-pointer"
                   >
                     {session?.user?.image ? (
                       <img

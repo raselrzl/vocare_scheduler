@@ -3,7 +3,49 @@
 import { Button } from "@/components/ui/button";
 import { useFormStatus } from "react-dom";
 import Image from "next/image";
+import { Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
+
+interface iAppProps{
+  text: string;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link"
+    | null
+    | undefined;
+    className?: string;
+}
+
+export function SubmitButton({text, variant, className}:iAppProps) {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      {pending ? (
+        <Button
+          disabled
+          className={cn("w-full", className)}
+          variant={"outline"}
+        >
+          <Loader2 className="size-4 mr-2 animate-spin"/> Please wait
+        </Button>
+      ) : (
+        <Button
+          type="submit"
+          className={cn("w-full", className)}
+          variant={variant}
+        >
+         
+          {text}
+        </Button>
+      )}
+    </>
+  );
+}
 
 export function GoogleAuthButton() {
   const { pending } = useFormStatus();

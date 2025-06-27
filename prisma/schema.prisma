@@ -15,6 +15,8 @@ model User {
   emailVerified DateTime?
   image         String?
   userName      String?   @unique
+  grantId       String? 
+  grantEmail    String?   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   accounts      Account[]

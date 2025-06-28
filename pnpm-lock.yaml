@@ -17,9 +17,6 @@ importers:
       '@conform-to/zod':
         specifier: ^1.7.2
         version: 1.7.2(zod@3.25.67)
-      '@internationalized/date':
-        specifier: ^3.8.2
-        version: 3.8.2
       '@prisma/client':
         specifier: ^6.10.1
         version: 6.10.1(prisma@6.10.1(typescript@5.8.3))(typescript@5.8.3)
@@ -71,18 +68,12 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.1.0
-      react-aria:
-        specifier: ^3.41.1
-        version: 3.41.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-aria-components:
         specifier: ^1.10.1
         version: 1.10.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
-      react-stately:
-        specifier: ^3.39.0
-        version: 3.39.0(react@19.1.0)
       sonner:
         specifier: ^2.0.5
         version: 2.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -103,7 +94,7 @@ importers:
         specifier: ^20
         version: 20.19.1
       '@types/react':
-        specifier: ^19
+        specifier: ^19.1.8
         version: 19.1.8
       '@types/react-dom':
         specifier: ^19

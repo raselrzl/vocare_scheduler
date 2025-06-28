@@ -1,4 +1,3 @@
-import Calendar from "@/app/components/bookingForm/Calendar";
 import { RenderCalendar } from "@/app/components/bookingForm/RenderCalendar";
 import prisma from "@/app/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
@@ -89,7 +88,7 @@ export default async function BookingFormPage({
 
           {/* Second div: Calendar */}
           <div>
-            <RenderCalendar />
+            <RenderCalendar availability={data.User?.availability as any}/>
           </div>
 
           {/* Second Separator */}

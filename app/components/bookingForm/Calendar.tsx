@@ -7,7 +7,9 @@ import { DateValue, CalendarProps } from "@react-types/calendar";
 import CalendarHeader from "./CalendarHeader";
 import { CalendarGrid } from "./CalendarGrid";
 
-export default function Calendar(props: CalendarProps<DateValue>) {
+export default function Calendar(props: CalendarProps<DateValue> &{
+  isDateUnavailable?: (date: DateValue) => boolean
+}) {
   let { locale } = useLocale();
   let state = useCalendarState({
     createCalendar,
@@ -30,7 +32,7 @@ export default function Calendar(props: CalendarProps<DateValue>) {
       />
 
       <div className="flex gap-8">
-          <CalendarGrid state={state}/>
+          <CalendarGrid state={state} isDateUnavailable={props.isDateUnavailable}/>
       </div>
     </div>
   );

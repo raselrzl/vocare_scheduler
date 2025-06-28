@@ -13,19 +13,19 @@ export function CalendarCell({
   state,
   date,
   currentMonth,
+  isUnavailable,
 }: {
   state: CalendarState;
   date: CalendarDate;
   currentMonth: CalendarDate;
+  isUnavailable?:boolean
 }) {
   let ref = useRef(null);
   let {
     cellProps,
     buttonProps,
     isSelected,
-    isOutsideVisibleRange,
     isDisabled,
-    isUnavailable,
     formattedDate,
   } = useCalendarCell({ date }, state, ref);
 
@@ -33,6 +33,8 @@ export function CalendarCell({
   const isDateTodat = isToday(date, getLocalTimeZone());
 
   const isOutsideOfMonth = !isSameMonth(currentMonth, date);
+
+  const finallyIsDisabled=isDisabled || isUnavailable;
 
   return (
     <td
@@ -48,9 +50,10 @@ export function CalendarCell({
         <div
           className={cn(
             "size-full rounded-sm flex items-center justify-center text-sm font-semibold cursor-pointer",
+            finallyIsDisabled ? "text-muted-foreground cursor-not-allowed":"",
             isSelected ? "bg-primary text-white" : "",
-            isDisabled ? "text-muted-foreground cursor-not-allowed" : "",
-            !isSelected && !isDisabled ? "bg-primary/10" : ""
+           /*  isDisabled ? "text-muted-foreground cursor-not-allowed" : "", */
+            !isSelected && !finallyIsDisabled ? "bg-primary/10" : ""
           )}
         >
           {formattedDate}

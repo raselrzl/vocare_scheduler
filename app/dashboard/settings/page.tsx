@@ -18,7 +18,7 @@ async function getData(id: string): Promise<{
   });
 
   if (!data) {
-    notFound(); // this throws and never returns
+    notFound(); 
   }
 
   return data;

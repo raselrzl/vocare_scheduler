@@ -68,6 +68,9 @@ importers:
       '@react-types/calendar':
         specifier: ^3.7.2
         version: 3.7.2(react@19.1.0)
+      '@react-types/shared':
+        specifier: ^3.30.0
+        version: 3.30.0(react@19.1.0)
       '@uploadthing/react':
         specifier: ^7.3.2
         version: 7.3.2(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(uploadthing@7.7.3(next@15.3.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(tailwindcss@4.1.10))

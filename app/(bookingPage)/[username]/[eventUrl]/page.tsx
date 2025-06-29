@@ -1,4 +1,5 @@
 import { RenderCalendar } from "@/app/components/bookingForm/RenderCalendar";
+import TimeTable from "@/app/components/bookingForm/TimeTable";
 import prisma from "@/app/lib/db";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -109,8 +110,7 @@ export default async function BookingFormPage(props: {
 
           {/* Third div */}
           <div>
-            <h3 className="text-base font-semibold mb-2">Booking Details</h3>
-            <p className="text-sm text-muted-foreground">This is my 3rd div</p>
+            <TimeTable selectedDate={selectedDate} userName={username} duration={data.duration}/>
           </div>
         </CardContent>
       </Card>

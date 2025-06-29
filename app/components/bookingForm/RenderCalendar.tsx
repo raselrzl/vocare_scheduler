@@ -38,9 +38,9 @@ export function RenderCalendar({ availability }: iAppProps) {
 
   const isDateUnavailable = (date: DateValue) => {
     const dayOfWeek = date.toDate(getLocalTimeZone()).getDay();
-   /*  const adjustIndex = dayOfWeek === 0 ? 6 : dayOfWeek - 1; */
+    const adjustIndex = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
 
-    return !availability[dayOfWeek].isActive;
+    return !availability[adjustIndex].isActive;
   };
   return (
     <Calendar

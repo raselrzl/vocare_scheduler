@@ -44,6 +44,18 @@ importers:
       '@radix-ui/react-switch':
         specifier: ^1.2.5
         version: 1.2.5(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/calendar':
+        specifier: ^3.8.3
+        version: 3.8.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/i18n':
+        specifier: ^3.12.10
+        version: 3.12.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/utils':
+        specifier: ^3.29.1
+        version: 3.29.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/visually-hidden':
+        specifier: ^3.8.25
+        version: 3.8.25(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-stately/calendar':
         specifier: ^3.8.2
         version: 3.8.2(react@19.1.0)

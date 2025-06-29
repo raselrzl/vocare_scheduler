@@ -7,6 +7,7 @@ import { createEventTypeSchema, onboardingSchemaValidation, settingsSchema } fro
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { nylas } from "./lib/nylas";
+import { use } from "react";
 
 export async function OnboardingAction(previousState: any, formData: FormData) {
   const session = await requireUser();
@@ -188,4 +189,32 @@ export async function createMeetingAction(formData: FormData){
     }
   })
   return redirect("/success")
+}
+
+
+export async function cancelMeetingAction(formData: FormData){
+   const session = await requireUser();
+
+   const userData=await prisma.user.findUnique({
+    where:{
+      id:session.user?.id
+    },
+    select:{
+      grantEmail:true,
+      grantId:true,
+    },
+
+   
+   })
+    if(!userData){
+      throw new Error("User not found")
+    }
+    const data=await nylas.events.destroy({
+      eventId:formData.get("eventId") as string,
+      identifier:userData.grantId as string,
+      queryParams:{
+        calendarId:userData.grantEmail as string,
+      }
+    })
+    revalidatePath("/dashboard/meetings")
 }

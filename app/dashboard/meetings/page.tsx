@@ -1,3 +1,4 @@
+import { cancelMeetingAction } from "@/app/action";
 import EmptyState from "@/app/components/EmptyState";
 import { SubmitButton } from "@/app/components/SubmitButton";
 import prisma from "@/app/lib/db";
@@ -62,7 +63,8 @@ export default async function MeetingsPage() {
                 (booking.when as any).endTime ?? (booking.when as any).time;
 
               return (
-                <form key={booking.id} className="px-2">
+                <form key={booking.id} className="px-2" action={cancelMeetingAction}>
+                  <input type="hidden" name="eventId" value={booking.id} />
                   <CardContent className="space-y-2">
                     <div className="grid grid-cols-1 md:grid-cols-3 text-sm">
                       <div className="col-span-1">

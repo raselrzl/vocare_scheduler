@@ -50,6 +50,9 @@ importers:
       '@react-aria/calendar':
         specifier: ^3.8.3
         version: 3.8.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/focus':
+        specifier: ^3.20.5
+        version: 3.20.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-aria/i18n':
         specifier: ^3.12.10
         version: 3.12.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

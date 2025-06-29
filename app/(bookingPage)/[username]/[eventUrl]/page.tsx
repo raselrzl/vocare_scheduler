@@ -40,12 +40,10 @@ async function getData(eventUrl: string, userName: string) {
   return data;
 }
 
-export default async function BookingFormPage({
-  params,
-}: {
-  params: { username: string; eventUrl: string };
+export default async function BookingFormPage(props: {
+  params: Promise<{ username: string; eventUrl: string }>;
 }) {
-  const { username, eventUrl } = await params;
+  const { username, eventUrl } = await props.params;
   const data = await getData(eventUrl, username);
   return (
     <div className="min-h-screen w-screen flex items-center justify-center">

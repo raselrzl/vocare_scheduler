@@ -23,6 +23,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { CopyLinkMenuItem } from "../components/CopyLinkMenu";
 
 async function getData(userId: string) {
   const data = await prisma.user.findUnique({
@@ -99,10 +100,7 @@ export default async function DashboardPage() {
                           </Link>
                         </DropdownMenuItem>
 
-                        <DropdownMenuItem>
-                          <Copy />
-                          Copy
-                        </DropdownMenuItem>
+                        <CopyLinkMenuItem meetingUrl={`${process.env.NEXT_PUBLIC_URL}/${data.userName}/${item.url}`} />
                         <DropdownMenuItem>
                           <Pen />
                           Edit

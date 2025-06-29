@@ -40,20 +40,16 @@ async function getData(eventUrl: string, userName: string) {
   return data;
 }
 
-type PageProps = {
-  params: {
-    username: string;
-    eventUrl: string;
-  };
-  searchParams: {
-    date?: string;
-    [key: string]: string | undefined;
-  };
+type SearchParams = {
+  date?: string;
 };
 
-export default async function BookingFormPage({ params, searchParams }: PageProps) {
-  const { username, eventUrl } = params;
-  const { date } = searchParams;
+export default async function BookingFormPage(props: {
+  params: Promise<{ username: string; eventUrl: string }>;
+  searchParams: SearchParams;
+}) {
+ const { username, eventUrl } = await props.params;
+  const { date } = props.searchParams;
   const data = await getData(eventUrl, username);
   const selectedDate=date ? new Date(date):new Date()
   const formattedDate=new Intl.DateTimeFormat("en-US",{

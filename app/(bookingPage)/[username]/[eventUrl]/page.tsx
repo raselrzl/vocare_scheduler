@@ -42,21 +42,28 @@ async function getData(eventUrl: string, userName: string) {
 
 type SearchParams = {
   date?: string;
+  [key: string]: string | undefined;
 };
 
-export default async function BookingFormPage(props: {
-  params: Promise<{ username: string; eventUrl: string }>;
+export default async function BookingFormPage({
+  params,
+  searchParams,
+}: {
+  params: { username: string; eventUrl: string };
   searchParams: SearchParams;
 }) {
-  const { username, eventUrl } = await props.params;
+  const { username, eventUrl } = params;
+  const { date } = searchParams;
+
   const data = await getData(eventUrl, username);
-  const { date } =await props.searchParams;
-  const selectedDate=date ? new Date(date):new Date()
-  const formattedDate=new Intl.DateTimeFormat("en-US",{
-    weekday:"long",
-    day:"numeric",
-    month:"long",
-  }).format(selectedDate)
+
+  const selectedDate = date ? new Date(date) : new Date();
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  }).format(selectedDate);
+
   return (
     <div className="min-h-screen w-screen flex items-center justify-center">
       <Card className="max-w-[1000px] w-full mx-auto rounded-md">
@@ -77,7 +84,7 @@ export default async function BookingFormPage(props: {
             <div className="space-y-2 mt-4 text-sm text-muted-foreground">
               <p className="flex items-center">
                 <CalendarX2 className="size-4 mr-2 text-primary" />
-                {formattedDate ?? "Not provided"}
+                {formattedDate}
               </p>
               <p className="flex items-center">
                 <Clock className="size-4 mr-2 text-primary" />
@@ -98,7 +105,7 @@ export default async function BookingFormPage(props: {
 
           {/* Second div: Calendar */}
           <div>
-            <RenderCalendar availability={data.User?.availability as any}/>
+            <RenderCalendar availability={data.User?.availability as any} />
           </div>
 
           {/* Second Separator */}
@@ -117,3 +124,4 @@ export default async function BookingFormPage(props: {
     </div>
   );
 }
+

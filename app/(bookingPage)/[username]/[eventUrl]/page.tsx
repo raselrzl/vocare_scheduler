@@ -45,13 +45,12 @@ type SearchParams = {
   [key: string]: string | undefined;
 };
 
-export default async function BookingFormPage({
-  params,
-  searchParams,
-}: {
+type PageProps = {
   params: { username: string; eventUrl: string };
   searchParams: SearchParams;
-}) {
+};
+
+export default async function BookingFormPage({ params, searchParams }: PageProps) {
   const { username, eventUrl } = params;
   const { date } = searchParams;
 

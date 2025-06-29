@@ -46,10 +46,10 @@ type SearchParams = {
 
 export default async function BookingFormPage(props: {
   params: Promise<{ username: string; eventUrl: string }>;
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
- const { username, eventUrl } = await props.params;
-  const { date } = props.searchParams;
+  const { username, eventUrl } = await props.params;
+  const { date } = await props.searchParams;
   const data = await getData(eventUrl, username);
   const selectedDate=date ? new Date(date):new Date()
   const formattedDate=new Intl.DateTimeFormat("en-US",{

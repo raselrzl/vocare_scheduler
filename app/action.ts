@@ -248,9 +248,43 @@ export async function EditEventTypeAction(
       duration: submission.value.duration,
       url: submission.value.url,
       description: submission.value.description,
-      videoCallSoftware: submission.value.videoCallSoftware
+      videoCallSoftware: submission.value.videoCallSoftware,
     },
   });
 
   return redirect("/dashboard");
+}
+
+export async function updateEventTypeAction(
+  previousState: any,
+  {
+    isChecked,
+    eventTypeId,
+  }: {
+    isChecked: boolean;
+    eventTypeId: string;
+  }
+) {
+  try {
+    const session = await requireUser();
+    const data = await prisma.eventType.update({
+      where: {
+        id: eventTypeId,
+        userId: session.user?.id,
+      },
+      data: {
+        active: isChecked,
+      },
+    });
+    revalidatePath("/dashboard");
+    return {
+      status: "success",
+      message: "event type status updated!",
+    };
+  } catch (error) {
+    return {
+      status: "Error",
+      message: "Something went wrong",
+    };
+  }
 }

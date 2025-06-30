@@ -288,3 +288,29 @@ export async function updateEventTypeAction(
     };
   }
 }
+
+
+export async function deleteEventTypeAction(formData: FormData) {
+  const session = await requireUser();
+  const eventTypeId = formData.get("id") as string;
+
+  try {
+    const eventType = await prisma.eventType.findFirst({
+      where: {
+        id: eventTypeId,
+        userId: session.user?.id,
+      },
+    });
+
+    if (!eventType) {
+      throw new Error("Unauthorized or event not found.");
+    }
+    await prisma.eventType.delete({
+      where: { id: eventTypeId },
+    });
+    redirect("/dashboard");
+  } catch (error) {
+    console.error("Failed to delete event type:", error);
+    throw new Error("Something went wrong while deleting the event.");
+  }
+}

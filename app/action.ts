@@ -310,7 +310,6 @@ export async function deleteEventTypeAction(formData: FormData) {
     });
     redirect("/dashboard");
   } catch (error) {
-    console.error("Failed to delete event type:", error);
-    throw new Error("Something went wrong while deleting the event.");
+    console.log("Failed to delete event type:", error);
   }
 }

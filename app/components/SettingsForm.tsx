@@ -94,7 +94,7 @@ export default function SettingForm({
                 </Button>
               </div>
             ) : (
-              <div className="w-40 h-40 mx-auto">
+              <div className="w-auto h-60 mx-auto">
                 <UploadDropzone
                   endpoint="imageUploader"
                   onClientUploadComplete={(res) => {

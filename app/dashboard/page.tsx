@@ -100,10 +100,14 @@ export default async function DashboardPage() {
                           </Link>
                         </DropdownMenuItem>
 
-                        <CopyLinkMenuItem meetingUrl={`${process.env.NEXT_PUBLIC_URL}/${data.userName}/${item.url}`} />
-                        <DropdownMenuItem>
-                          <Pen />
-                          Edit
+                        <CopyLinkMenuItem
+                          meetingUrl={`${process.env.NEXT_PUBLIC_URL}/${data.userName}/${item.url}`}
+                        />
+                        <DropdownMenuItem asChild>
+                          <Link href={`/dashboard/event/${item.id}`}>
+                            <Pen />
+                            Edit
+                          </Link>
                         </DropdownMenuItem>
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
@@ -129,7 +133,9 @@ export default async function DashboardPage() {
                 </Link>
                 <div className="flex bg-muted px-5 py-3 items-center justify-between">
                   <Switch />
-                  <Button>Edit Event</Button>
+                    {" "}
+                    <Link href={`/dashboard/event/${item.id}`} className="bg-primary text-white px-2 py-1 rounded-md">Edit Event</Link>
+               
                 </div>
               </div>
             ))}

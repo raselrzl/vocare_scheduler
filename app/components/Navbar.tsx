@@ -13,7 +13,7 @@ export function Navbar() {
             className="object-contain h-30"
           />
           <p className="text-muted-foreground text-sm text-center">
-            A scheduling app, to make schedule easier
+            A scheduling app, to make schedule easier!
           </p>
         </Link>
 

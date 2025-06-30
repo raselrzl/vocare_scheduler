@@ -25,9 +25,10 @@ async function getData(eventTypeId: string) {
 export default async function EditRoutePage({
   params,
 }: {
-  params: { eventTypeId: string };
+  params: Promise<{ eventTypeId: string }>;
 }) {
-  const data = await getData(params.eventTypeId);
+  const { eventTypeId } = await params;
+  const data = await getData(eventTypeId);
   return (
     <>
       <EditEventTypeForm
